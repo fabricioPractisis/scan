@@ -3,12 +3,8 @@ function dale(){
 cordova.plugins.barcodeScanner.scan(
       function (result) {
 		  var id = result.text;
-         
-		$.post('https://www.practisis.net/nubeposboot/www/saberDatos.php',{
-		id:id
-		}).done(function(data){
-			alert(data);
-		});
+         alert(id);
+         document.getElementById("recibeScan").value = “+id+”;
       }, 
       function (error) {
           alert("Scanning failed: " + error);
