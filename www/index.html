@@ -1,21 +1,71 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-   
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name = "format-detection" content = "telephone=no"/>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Scan</title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <title>My Barcode/QR Code Scanner</title>
+        <style>
+            body{
+                 background:#888888 none repeat scroll 0 0;
+            }
+            input[type='text']{
+                width:18em;
+                border:1px solid black;
+            }
+            input[type='button']{
+                width:20em;
+                border:1px solid black;
+                color:#ffffff;
+                font-family:"Times New Roman",Times,serif;
+                font-size:0.9em;
+                font-weight:bold;
+                background:#737CA1;
+            }
+        </style>
+        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>
+        <script type="text/javascript">
+            function scanCode(){
+                window.plugins.barcodeScanner.scan(
+                    function(result){
+                        alert("Scanned Code: " + result.text 
+                        + ". Format: " + result.format
+                        + ". Cancelled: " + result.cancelled);
+                    }, 
+                    function(error){
+                        alert("Scan failed: " + error);
+                    }
+                );
+            }
+ 
+            function encodeData(){
+                var data = document.getElementById("data").value;
+                if (data != ''){
+                    window.plugins.barcodeScanner.encode(
+                        BarcodeScanner.Encode.TEXT_TYPE, data, 
+                        function(success){
+                            alert("Encode success: " + success);
+                        }, 
+                        function(fail){
+                            alert("Encoding failed: " + fail);
+                        }
+                    );
+                }
+                else{
+                    alert("Please enter some data.");
+                    return false;
+                }
+            }
+        </script>
     </head>
-    <body  style="background-size: 100%;background-color:#7AC0FF">
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <div align="center" valign="center">
-		<input type="button" value="scan" onclick="dale();" ontouch="dale();" style="margin-top: 230px; width: 100px; height: 30px; font-size: 1em"/>
-        </div><br/>
-        <input type='text' id='recibeScan' name='recibeScan'/>
+ 
+    <body>
+        <h3>Barcode/QR Code Scanner And Encoder</h3>
+ 
+        <input type="button" value="Scan Code" onclick="scanCode();"/><br/><br/>
+ 
+        Data : <br/>
+        <input type="text" name="data" id="data" /><br/><br/>
+        <input type="button" value="Encode Data" onclick="encodeData();"/>
     </body>
 </html>
