@@ -7,6 +7,7 @@ cordova.plugins.barcodeScanner.scan(
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+		$('#recibeScan').val(result.text);
       }, 
       function (error) {
           alert("Scanning failed: " + error);
