@@ -8,15 +8,24 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Scan</title>
     </head>
-    <body  style="background-size: 100%;background-color: #000000">
+    <body  style="background-size: 100%;background-color:#7AC0FF">
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <div align="center" valign="center">
-	
-            <input type="button" value="scan" onclick="dale();" ontouch="dale();" style="margin-top: 230px; width: 100px; height: 30px; font-size: 1em"/>
+		<table>
+			<tr>
+				<td>
+					<input type='text' id='recibeScan' />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					 <input type="button" value="scan" onclick="dale();" ontouch="dale();" style="margin-top: 230px; width: 100px; height: 30px; font-size: 1em"/>
+				</td>
+			</tr>
+		</table>
         </div>
-       
     </body>
 </html>
