@@ -4,10 +4,7 @@ function dale(){
 cordova.plugins.barcodeScanner.scan(
       function (result) {
       	var s = result.text;
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+          alert(s);
 		$('#recibeScan').html(s);
       }, 
       function (error) {
